@@ -2,7 +2,7 @@ package com.xss.singleton;
 
 /**
  * @ClassName Mgr07
- * @Description 枚举类单例,不仅可以解决线程同步,还可以防止反序列化
+ * @Description 枚举类单例,不仅可以解决线程同步,还可以防止反序列化,语法上最完美(java创始人之一实现的)
  * @Author xushaoshuai
  * @Parameters
  * @Date 2020/5/27 7:29 PM

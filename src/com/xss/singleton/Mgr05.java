@@ -12,7 +12,7 @@ package com.xss.singleton;
  * @Return
  */
 public class Mgr05 {
-    private static Mgr05 INSTANCE;
+    private static volatile Mgr05 INSTANCE;
 
     private Mgr05() {
     }
