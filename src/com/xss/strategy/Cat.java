@@ -21,6 +21,12 @@ public class Cat implements Comparable<Cat>{
 //        else return 0;
 //    }
 //
+
+    @Override
+    public void m() {
+        System.out.println("cat");
+    }
+
     @Override
     public String toString() {
         return "Cat{" +

@@ -24,6 +24,11 @@ public class Dog implements Comparable<Dog>{
     }
 
     @Override
+    public void m() {
+        System.out.println("dog");
+    }
+
+    @Override
     public int compareTo(Dog o) {
         Dog d = (Dog) o;
         if(this.food < d.food) return -1;

@@ -17,11 +17,16 @@ public class Main {
         Sorter sorter = new Sorter<Dog>();
         Sorter catSorter = new Sorter<Cat>();
         Cat c1 = new Cat(1,1);
+        c1.m();
+        Dog dog = new Dog(3);
+        dog.m();
         Cat c2 = new Cat(4,4);
         Cat c3 = new Cat(3,3);
         Cat[] cats = new Cat[]{c1,c2,c3};
         //Dog[] dogs = new Dog[]{new Dog(3),new Dog(1),new Dog(8),new Dog(2)};
         sorter.sort(cats,new CatComparator());
-        System.out.println(Arrays.toString(cats));
+        //System.out.println(Arrays.toString(cats));
+
+
     }
 }
