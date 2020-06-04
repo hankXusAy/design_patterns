@@ -17,8 +17,8 @@ public class Main {
         msg.setMsg("大家好:),<script>,欢迎访问mashibing.com,大家都是996");
 
         FilterChain fc = new FilterChain();
-        fc.add(new IllegalFilter()).
-                add(new FaceFilter());
+        fc.add(new FaceFilter()).
+                add(new IllegalFilter());
         fc.doFilter(msg);
 
         FilterChain fc2 = new FilterChain();
@@ -48,45 +48,49 @@ class Msg{
     }
 }
 interface Filter{
-    void doFilter(Msg m);
+    boolean doFilter(Msg m);
 }
 class FaceFilter implements Filter{
 
     @Override
-    public void doFilter(Msg m){
+    public boolean doFilter(Msg m){
         String msg = m.getMsg();
         msg = msg.replace(":)","^V^");
         m.setMsg(msg);
+        return true;
     }
 }
 
 class IllegalFilter implements Filter{
 
     @Override
-    public void doFilter(Msg m){
+    public boolean doFilter(Msg m){
         String r = m.getMsg();
         r = r.replace('<', '[');
         r = r.replace('>',']');
         m.setMsg(r);
+        return false;
     }
 }
 class URLFilter implements Filter{
 
     @Override
-    public void doFilter(Msg m){
+    public boolean doFilter(Msg m){
         String r = m.getMsg();
         r = r.replace("mashibing.com", "http://www.mashibing.com");
         m.setMsg(r);
+        return true;
     }
 }
 
 class NumFilter implements Filter{
 
     @Override
-    public void doFilter(Msg m){
+    public boolean doFilter(Msg m){
         String r = m.getMsg();
         r = r.replace("996", "955");
         m.setMsg(r);
+        return true;
     }
 }
 
@@ -98,9 +102,11 @@ class FilterChain implements Filter{
         return this;
     }
 
-    public void doFilter(Msg msg){
+    public boolean doFilter(Msg msg){
         for (Filter filter : filters) {
-            filter.doFilter(msg);
+            if(!filter.doFilter(msg)) return false;
         }
+
+        return true;
     }
 }
